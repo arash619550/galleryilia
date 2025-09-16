@@ -14,11 +14,11 @@ export default function ProductSection({ text }: { text: TText }) {
                     <h2 className='mb-2'>
                         {text.h2}
                     </h2>
-                    <div className='bg-blue-300 w-40 h-1'></div>
+                    <div className='bg-blue-300 w-40 h-1 md:w-28'></div>
                 </div>
                 <div className='flex flex-col '>
-                    <Link href={`/${text.link}`} className='text-gray-500 text-2xl text-left'>{text.textLink}</Link>
-                    <div className='bg-fuchsia-300 w-120 h-1'></div>
+                    <Link href={`/${text.link}`} className='text-gray-500 text-2xl max-w-fit mr-auto'>{text.textLink}</Link>
+                    <div className='bg-white w-120 h-1 md:w-312'></div>
                 </div>
             </div>
         </Container>

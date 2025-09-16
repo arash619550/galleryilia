@@ -9,14 +9,14 @@ export default function Product() {
             name: 'محصول ۱',
             src: '/images/products/product1/1.webp',
             alt: 'عکس محصول ۱',
-            link:'/smartwatch'
+            link: '/smartwatch'
         },
         {
             id: 2,
             name: 'محصول ۲',
             src: '/images/products/product1/2.webp',
             alt: 'عکس محصول ۲',
-            link:'/powerbank'
+            link: '/powerbank'
 
         },
         {
@@ -24,7 +24,7 @@ export default function Product() {
             name: 'محصول ۳',
             src: '/images/products/product1/3.webp',
             alt: 'عکس محصول ۳',
-            link:'/headphone'
+            link: '/headphone'
 
         },
         {
@@ -32,17 +32,17 @@ export default function Product() {
             name: 'محصول ۴',
             src: '/images/products/product1/4.webp',
             alt: 'عکس محصول ۴',
-            link:'/speaker'
+            link: '/speaker'
 
         },
 
     ]
     return (
-        <Container>
-            <div className='flex flex-row justify-center gap-x-2 pt-6'>
+        <Container >
+            <div className='flex flex-row justify-center gap-x-2 pt-6 '>
                 {product1.map(item => (
                     <Link href={`${item.link}`}>
-                        <img src={item.src} alt={item.alt} className='w-42' />
+                        <img src={item.src} alt={item.alt} className='w-42 rounded-3xl md:w-84' />
                     </Link>
                 ))}
             </div>
