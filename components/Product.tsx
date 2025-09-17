@@ -1,4 +1,4 @@
-import React, { Children } from 'react'
+import React from 'react'
 import Container from './Container'
 import Link from 'next/link'
 
@@ -41,7 +41,7 @@ export default function Product() {
         <Container >
             <div className='flex flex-row justify-center gap-x-2 pt-6 '>
                 {product1.map(item => (
-                    <Link href={`${item.link}`}>
+                    <Link href={`${item.link}`} key={item.id}>
                         <img src={item.src} alt={item.alt} className='w-42 rounded-3xl md:w-84' />
                     </Link>
                 ))}

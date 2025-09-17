@@ -41,7 +41,7 @@ export default function Navbar() {
                     <Link href={'/'} className='flex gap-1' ><img src={'/images/navbar/burger-bar.png'} alt="burger bar" className='w-6 ' /> دسته بندی کالا ها</Link>
                 </div>
                 <Link href={'/'}>خانه</Link>
-                <Link href={'/'}>همه محصولات</Link>
+                <Link href={'/all-products'}>همه محصولات</Link>
             </div>
             {menuOpen && vh >= scrollY &&
                 <div className='flex flex-col p-4 z-2 bg-fuchsia-200 max-w-140 fixed top-0 w-140 h-screen md:hidden'>

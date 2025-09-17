@@ -29,8 +29,8 @@ export default function CarouselTemplate({ product, banner }: { product: TProduc
                 >
                     {product.map((p) => (
                         <SwiperSlide key={p.id}>
-                            <div className="p-4 rounded-lg text-center min-h-72 flex flex-col bg-white">
-                                <img src={p.src} alt={p.alt} className="w-full h-40 object-contain rounded-md mb-1" />
+                            <div className="p-4 rounded-lg text-center flex flex-col bg-white">
+                                <img src={p.src} alt={p.alt} className="w-full object-contain rounded-md mb-1" />
                                 <h3 className="font-medium min-h-16">{p.name}</h3>
                                 <h4 className='text-left'><span className='font-bold'>{p.price}&nbsp;</span>تومان</h4>
                             </div>
