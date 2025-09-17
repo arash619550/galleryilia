@@ -2,7 +2,6 @@ import React from 'react'
 import Product from './Product'
 import CarouselTemplate from './CarouselTemplate'
 import ProductSection from './ProductSection'
-import Footer from './Footer'
 export default function Main() {
     const smartWatch = [
         {
