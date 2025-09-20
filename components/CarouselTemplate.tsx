@@ -32,7 +32,7 @@ export default function CarouselTemplate({ product, banner }: { product: TProduc
                             <div className="p-4 rounded-lg text-center flex flex-col bg-white">
                                 <img src={p.src} alt={p.alt} className="w-full object-contain rounded-md mb-1" />
                                 <h3 className="font-medium min-h-16">{p.name}</h3>
-                                <h4 className='text-left'><span className='font-bold'>{p.price}&nbsp;</span>تومان</h4>
+                                <h4 className='text-left'><span className='font-semibold'>{p.price}&nbsp;</span>تومان</h4>
                             </div>
                         </SwiperSlide>
                     ))}
