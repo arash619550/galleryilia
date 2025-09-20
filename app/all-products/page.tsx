@@ -1,15 +1,22 @@
+'use client';
+import { useState } from 'react'
 import Container from '@/components/Container'
 import { smartWatch, headphone, powerbank, speaker } from '@/data/products'
 import Link from 'next/link'
 export default function AllProducts() {
+    const [sortOrder, setSortOrder] = useState<'cheap' | 'expensive'>('cheap')
+    const allProducts = [...smartWatch, ...powerbank, ...headphone, ...speaker]
+    const sortedProducts = [...allProducts].sort((a, b) =>
+        sortOrder === 'cheap' ? a.price - b.price : b.price - a.price
+    )
     return (
-        <div className='bg-fuchsia-100 pt-16 '>
+        <div className='bg-fuchsia-100 pt-16'>
             <Container>
                 <div className='grid grid-cols-1 bg-white py-2 px-4 mb-2'>
                     <div className='flex flex-col gap-2'>
                         <span className='font-semibold'>جستجو در نتایج</span>
                         <hr className='text-gray-300' />
-                        <div className='relative '>
+                        <div className='relative'>
                             <img src="/images/navbar/search-alt-1-svgrepo-com.svg" alt="search" className='w-6 absolute top-1/2 -translate-y-1/2 right-1' />
                             <input type="text" placeholder='نام محصول یا برند مورد نظر را بنویسید...' className='w-full outline-0 border-0 pr-8 bg-gray-100 py-1.5 px-2 rounded' />
                         </div>
@@ -29,19 +36,19 @@ export default function AllProducts() {
                     <hr className='text-gray-300 mb-2' />
                     <div className='flex justify-between'>
                         <span>از</span>
-                        <input type="number" value={0} max={100000000} className='w-[45%] text-center border-1 rounded border-gray-300' />
+                        <input type="number" defaultValue={0} max={100000000} className='w-[45%] outline-0 text-center border-1 rounded border-gray-300' />
                         <span>تا</span>
-                        <input type="number" value={100000000} min={0} className='w-[45%] text-center border-1 rounded border-gray-300' />
+                        <input type="number" defaultValue={100000000} min={0} className='w-[45%] outline-0 text-center border-1 rounded border-gray-300' />
                         <span>تومان</span>
                     </div>
                 </div>
-                <div className='bg-white px-2 pt-2'>
+                <div className='bg-white px-2 pt-2 mb-2'>
                     <div className='flex justify-between items-center pb-2'>
                         <div className='flex gap-1.5'>
                             <span>مرتب‌سازی براساس:</span>
-                            <select className='border rounded border-gray-300'>
-                                <option value="">ارزانترین</option>
-                                <option value="">گرانترین</option>
+                            <select className='border rounded border-gray-300' value={sortOrder} onChange={e => setSortOrder(e.target.value as 'cheap' | 'expensive')}>
+                                <option value="cheap">ارزان‌ترین</option>
+                                <option value="expensive">گران‌ترین</option>
                             </select>
                         </div>
                         <div>
@@ -50,36 +57,13 @@ export default function AllProducts() {
                     </div>
                     <hr className='text-gray-300' />
                 </div>
-                <div className='bg-white grid grid-cols-2 '>
-                    {smartWatch.map(item => (
-                        <div className='flex flex-col p-4 items-center pb-8 border border-gray-300'>
+                <div className='bg-white grid grid-cols-2'>
+                    {sortedProducts.map(item => (
+                        <div key={item.id} className='flex flex-col p-4 items-center pb-8 border border-gray-300'>
                             <img src={item.src} alt={item.alt} className='w-50 mb-1.5' />
                             <h3 className='w-full mb-1.5'>{item.name}</h3>
-                            <div className='flex mr-auto'><h4 className='text-left w-full mb-1.5 font-semibold'>{item.price}</h4>&nbsp;<span>تومان</span>
-                            </div>
-                        </div>
-                    ))}
-                    {powerbank.map(item => (
-                        <div className='flex flex-col p-4 items-center pb-8 border border-gray-300'>
-                            <img src={item.src} alt={item.alt} className='w-50 mb-1.5' />
-                            <h3 className='w-full mb-1.5'>{item.name}</h3>
-                            <div className='flex mr-auto'><h4 className='text-left w-full mb-1.5 font-semibold'>{item.price}</h4>&nbsp;<span>تومان</span>
-                            </div>
-                        </div>
-                    ))}
-                    {headphone.map(item => (
-                        <div className='flex flex-col p-4 items-center pb-8 border border-gray-300'>
-                            <img src={item.src} alt={item.alt} className='w-50 mb-1.5' />
-                            <h3 className='w-full mb-1.5'>{item.name}</h3>
-                            <div className='flex mr-auto'><h4 className='text-left w-full mb-1.5 font-semibold'>{item.price}</h4>&nbsp;<span>تومان</span>
-                            </div>
-                        </div>
-                    ))}
-                    {speaker.map(item => (
-                        <div className='flex flex-col p-4 items-center pb-8 border border-gray-300'>
-                            <img src={item.src} alt={item.alt} className='w-50 mb-1.5' />
-                            <h3 className='w-full mb-1.5'>{item.name}</h3>
-                            <div className='flex mr-auto'><h4 className='text-left w-full mb-1.5 font-semibold'>{item.price}</h4>&nbsp;<span>تومان</span>
+                            <div className='flex mr-auto items-baseline'>
+                                <h4 className='text-left w-full mb-1.5 font-semibold text-lg'>{item.price}</h4>&nbsp;<span>تومان</span>
                             </div>
                         </div>
                     ))}
