@@ -255,3 +255,4 @@ export const productSection4: { h2: string, link: string, textLink: string } = {
     textLink: "مشاهده همه"
 };
 
+export const allProducts = [...smartWatch, ...powerbank, ...headphone, ...speaker]

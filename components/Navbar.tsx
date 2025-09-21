@@ -8,7 +8,6 @@ export default function Navbar() {
     const [vh, setVh] = useState(0)
     const [scrollY, setScrollY] = useState(0)
 
-
     useEffect(() => {
         setVh(window.innerHeight)
         const handleScroll = () => setScrollY(window.scrollY)
@@ -47,7 +46,8 @@ export default function Navbar() {
                 <div className='flex flex-col p-4 z-2 bg-fuchsia-200 max-w-140 fixed top-0 w-140 h-screen md:hidden'>
                     <img src="/images/navbar/close-circle-svgrepo-com.svg" alt="close" className='w-8 md:hidden' onClick={() => setMenuOpen(!menuOpen)} />
                     <img src="/images/logo/logo.webp" alt="logo" className='w-16 self-center md:hidden' />
-                    <ul>
+                    <ul onClick={() => setMenuOpen(!menuOpen)}>
+                        <li><Link href={'/all-products'}>دسته بندی محصولات</Link></li>
                         <li><Link href={'/smartwatch'}>ساعت هوشمند</Link></li>
                         <li><Link href={'/powerbank'}>پاور بانک</Link></li>
                         <li><Link href={'/headphone'}>هدفون</Link></li>
