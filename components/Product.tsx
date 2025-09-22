@@ -9,14 +9,14 @@ export default function Product() {
             name: 'محصول ۱',
             src: '/images/products/product1/1.webp',
             alt: 'عکس محصول ۱',
-            link: '/smartwatch'
+            link: '/all-products/smartwatch'
         },
         {
             id: 2,
             name: 'محصول ۲',
             src: '/images/products/product1/2.webp',
             alt: 'عکس محصول ۲',
-            link: '/powerbank'
+            link: '/all-products/powerbank'
 
         },
         {
@@ -24,7 +24,7 @@ export default function Product() {
             name: 'محصول ۳',
             src: '/images/products/product1/3.webp',
             alt: 'عکس محصول ۳',
-            link: '/headphone'
+            link: '/all-products/headphone'
 
         },
         {
@@ -32,7 +32,7 @@ export default function Product() {
             name: 'محصول ۴',
             src: '/images/products/product1/4.webp',
             alt: 'عکس محصول ۴',
-            link: '/speaker'
+            link: '/all-products/speaker'
 
         },
 

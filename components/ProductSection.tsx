@@ -17,7 +17,7 @@ export default function ProductSection({ text }: { text: TText }) {
                     <div className='bg-blue-300 w-40 h-1 md:w-28'></div>
                 </div>
                 <div className='flex flex-col '>
-                    <Link href={`/${text.link}`} className='text-gray-500 text-2xl max-w-fit mr-auto'>{text.textLink}</Link>
+                    <Link href={`/all-products/${text.link}`} className='text-gray-500 text-2xl max-w-fit mr-auto'>{text.textLink}</Link>
                     <div className='bg-white w-120 h-1 md:w-312'></div>
                 </div>
             </div>

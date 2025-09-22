@@ -33,7 +33,9 @@ export default function Navbar() {
                         <span className='hidden md:inline '>ورود به حساب کاربری</span>
                     </Link>
                     <span>
-                        <img src={'/images/navbar/shop-cart-svgrepo-com.svg'} alt="cart" className='w-6' />
+                        <Link href={'/cart'}>
+                            <img src={'/images/navbar/shop-cart-svgrepo-com.svg'} alt="cart" className='w-6' />
+                        </Link>
                     </span>
                 </div>
             </div>
@@ -50,10 +52,10 @@ export default function Navbar() {
                     <img src="/images/logo/logo.webp" alt="logo" className='w-16 self-center md:hidden' />
                     <ul onClick={() => setMenuOpen(!menuOpen)}>
                         <li><Link onClick={() => setMenuOpen(false)} href={'/all-products'}>دسته بندی محصولات</Link></li>
-                        <li><Link onClick={() => setMenuOpen(false)} href={'/smartwatch'}>ساعت هوشمند</Link></li>
-                        <li><Link onClick={() => setMenuOpen(false)} href={'/powerbank'}>پاور بانک</Link></li>
-                        <li><Link onClick={() => setMenuOpen(false)} href={'/headphone'}>هدفون</Link></li>
-                        <li><Link onClick={() => setMenuOpen(false)} href={'/speaker'}>اسپیکر</Link></li>
+                        <li><Link onClick={() => setMenuOpen(false)} href={'/all-products/smartwatch'}>ساعت هوشمند</Link></li>
+                        <li><Link onClick={() => setMenuOpen(false)} href={'/all-products/powerbank'}>پاور بانک</Link></li>
+                        <li><Link onClick={() => setMenuOpen(false)} href={'/all-products/headphone'}>هدفون</Link></li>
+                        <li><Link onClick={() => setMenuOpen(false)} href={'/all-products/speaker'}>اسپیکر</Link></li>
                     </ul>
                 </div>
             }
@@ -65,20 +67,20 @@ export default function Navbar() {
                         <img src="/images/logo/logo.webp" alt="logo" className='w-16 self-center md:hidden' />
                         <ul className=''>
                             <li className='py-4 '>
-                                <Link onClick={() => setMenuOpen(false)} href={'/smartwatch'} className='flex'>ساعت هوشمند
+                                <Link onClick={() => setMenuOpen(false)} href={'/all-products/smartwatch'} className='flex'>ساعت هوشمند
                                     <img src="/images/navbar/arrow-sm-left-svgrepo-com.svg" className='w-6 mr-auto ml-1.5' alt="arrow" />
                                 </Link>
                             </li>
                             <li className='py-4 '>
-                                <Link onClick={() => setMenuOpen(false)} href={'/powerbank'} className='flex' >پاور بانک
+                                <Link onClick={() => setMenuOpen(false)} href={'/all-products/powerbank'} className='flex' >پاور بانک
                                     <img src="/images/navbar/arrow-sm-left-svgrepo-com.svg" className='w-6  mr-auto ml-1.5' alt="arrow" /></Link>
                             </li>
                             <li className='py-4 '>
-                                <Link onClick={() => setMenuOpen(false)} href={'/headphone'} className='flex'>هدفون
+                                <Link onClick={() => setMenuOpen(false)} href={'/all-products/headphone'} className='flex'>هدفون
                                     <img src="/images/navbar/arrow-sm-left-svgrepo-com.svg" className='w-6  mr-auto ml-1.5' alt="arrow" /></Link>
                             </li>
                             <li className='py-4 '>
-                                <Link onClick={() => setMenuOpen(false)} href={'/speaker'} className='flex ' >اسپیکر
+                                <Link onClick={() => setMenuOpen(false)} href={'/all-products/speaker'} className='flex ' >اسپیکر
                                     <img src="/images/navbar/arrow-sm-left-svgrepo-com.svg" className='w-6 mr-auto ml-1.5' alt="arrow" />
                                 </Link>
                             </li>

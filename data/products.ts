@@ -236,22 +236,22 @@ export const banner3 = '/images/products/product1/headphone/bannerheadphone.jpg'
 export const banner4 = '/images/products/product1/speaker/speaker-banner.jpg'
 export const productSection1: { h2: string, link: string, textLink: string } = {
     h2: "ساعت هوشمند",
-    link: "samrtwatch",
+    link: "/all-products/samrtwatch",
     textLink: "مشاهده همه"
 };
 export const productSection2: { h2: string, link: string, textLink: string } = {
     h2: "پاور بانک",
-    link: "powerbank",
+    link: "/all-products/powerbank",
     textLink: "مشاهده همه"
 };
 export const productSection3: { h2: string, link: string, textLink: string } = {
     h2: "هدفون",
-    link: "headphone",
+    link: "/all-products/headphone",
     textLink: "مشاهده همه"
 };
 export const productSection4: { h2: string, link: string, textLink: string } = {
     h2: "اسپیکر",
-    link: "speaker",
+    link: "/all-products/speaker",
     textLink: "مشاهده همه"
 };
 
