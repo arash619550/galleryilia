@@ -9,7 +9,7 @@ type TText = {
 export default function ProductSection({ text }: { text: TText }) {
     return (
         <Container>
-            <div className='flex justify-between py-5 text-gray-500 text-2xl items-end'>
+            <div className='flex justify-between py-5 text-gray-500 text-2xl items-end  '>
                 <div className='flex flex-col'>
                     <h2 className='mb-2'>
                         {text.h2}

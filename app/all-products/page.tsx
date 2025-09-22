@@ -1,7 +1,7 @@
 'use client';
 import { useState } from 'react'
 import Container from '@/components/Container'
-import { smartWatch, headphone, powerbank, speaker, allProducts } from '@/data/products'
+import { smartWatch, headphone, powerbank, speaker } from '@/data/products'
 import Link from 'next/link'
 export default function AllProducts() {
     const [minPrice, setMinPrice] = useState(0)

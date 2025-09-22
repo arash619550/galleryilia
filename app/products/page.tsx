@@ -1,9 +1,9 @@
 import React from 'react'
-import { allProducts } from '../../data/products'
+import AllProducts from '../all-products/page'
+
+
 export default function page() {
     return (
-        <div>
-
-        </div>
+        <AllProducts></AllProducts>
     )
 }
