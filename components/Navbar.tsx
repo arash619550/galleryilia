@@ -1,13 +1,13 @@
 "use client"
 import Link from 'next/link'
-import React, { useEffect, useState } from 'react'
-
+import React, { useContext, useEffect, useState } from 'react'
+import { loginContext } from '@/hooks/LoginFunction'
 export default function Navbar() {
     const [search, setSearch] = useState("")
     const [menuOpen, setMenuOpen] = useState(false)
     const [vh, setVh] = useState(0)
     const [scrollY, setScrollY] = useState(0)
-
+    const { login, setLogin } = useContext(loginContext)
     useEffect(() => {
         setVh(window.innerHeight)
         const handleScroll = () => setScrollY(window.scrollY)
@@ -28,9 +28,10 @@ export default function Navbar() {
                     </div>
                 </div>
                 <div className='flex items-center gap-2 '>
-                    <Link href={'/users/login'} onClick={() => setMenuOpen(false)} className='bg-white p-2.5 rounded-md md:flex md:gap-1'>
+                    <Link href={'/login'} onClick={() => setMenuOpen(false)} className='bg-white p-2.5 rounded-md md:flex md:gap-1'>
                         <img src={'/images/navbar/person-svgrepo-com(1).svg'} alt="person" className='w-6' />
-                        <span className='hidden md:inline '>ورود به حساب کاربری</span>
+                        <span className='hidden md:inline'>ورود به حساب کاربری</span>
+                        {login ? <h2>true</h2> : <h2>false</h2>}
                     </Link>
                     <span>
                         <Link href={'/cart'}>
@@ -46,7 +47,8 @@ export default function Navbar() {
                 <Link onClick={() => setMenuOpen(false)} href={'/'}>خانه</Link>
                 <Link onClick={() => setMenuOpen(false)} href={'/all-products'}>همه محصولات</Link>
             </div>
-            {menuOpen && vh >= scrollY &&
+            {
+                menuOpen && vh >= scrollY &&
                 <div className='flex flex-col p-4 z-2 bg-fuchsia-200 max-w-140 fixed top-0 w-140 h-screen md:hidden'>
                     <img src="/images/navbar/close-circle-svgrepo-com.svg" alt="close" className='w-8 md:hidden' onClick={() => setMenuOpen(!menuOpen)} />
                     <img src="/images/logo/logo.webp" alt="logo" className='w-16 self-center md:hidden' />

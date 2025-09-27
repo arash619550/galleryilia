@@ -5,6 +5,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Top from "@/components/Top";
 import Phone from "@/components/Phone";
+import { LoginFunction } from "@/hooks/LoginFunction";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -31,13 +32,13 @@ export default function RootLayout({
   return (
     <html lang="fa-IR" dir="rtl">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-
         <Phone></Phone>
-        <Header></Header>
-        {children}
-        <Top></Top>
-        <Footer></Footer>
-
+        <LoginFunction>
+          <Header></Header>
+          {children}
+          <Top></Top>
+          <Footer></Footer>
+        </LoginFunction>
       </body>
     </html>
   );
