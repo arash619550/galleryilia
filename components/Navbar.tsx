@@ -2,12 +2,14 @@
 import Link from 'next/link'
 import React, { useContext, useEffect, useState } from 'react'
 import { loginContext } from '@/hooks/LoginFunction'
+import { nameContext } from '../hooks/Name'
 export default function Navbar() {
     const [search, setSearch] = useState("")
     const [menuOpen, setMenuOpen] = useState(false)
     const [vh, setVh] = useState(0)
     const [scrollY, setScrollY] = useState(0)
     const { login, setLogin } = useContext(loginContext)
+    const { firstNameC, setFirstNameC } = useContext(nameContext)
     useEffect(() => {
         setVh(window.innerHeight)
         const handleScroll = () => setScrollY(window.scrollY)
@@ -30,8 +32,8 @@ export default function Navbar() {
                 <div className='flex items-center gap-2 '>
                     <Link href={'/login'} onClick={() => setMenuOpen(false)} className='bg-white p-2.5 rounded-md md:flex md:gap-1'>
                         <img src={'/images/navbar/person-svgrepo-com(1).svg'} alt="person" className='w-6' />
-                        <span className='hidden md:inline'>ورود به حساب کاربری</span>
-                        {login ? <h2>true</h2> : <h2>false</h2>}
+                        {login ? <h2 className='hidden md:block'>{firstNameC}</h2> : <h2 className='hidden md:block'></h2>}
+                        {login ? <span className='hidden md:flex'>خوش آمدید</span> : <span className='hidden md:inline'>ورود به حساب کاربری</span>}
                     </Link>
                     <span>
                         <Link href={'/cart'}>

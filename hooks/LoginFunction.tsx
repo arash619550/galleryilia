@@ -5,7 +5,6 @@ type TLogin = {
     login: boolean;
     setLogin: React.Dispatch<React.SetStateAction<boolean>>;
 }
-
 export const loginContext = createContext<TLogin>({
     login: false,
     setLogin: () => { }

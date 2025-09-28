@@ -1,7 +1,9 @@
 "use client"
 import axios from "axios"
 import { useRouter } from "next/navigation"
-import React, { useId, useState } from "react"
+import React, { useContext, useId, useState } from "react"
+import { nameContext } from '../../hooks/Name'
+import Login from "../login/page"
 export default function Register() {
   const uniqueId = useId()
   const router = useRouter()
@@ -9,16 +11,20 @@ export default function Register() {
   const [password, setPassword] = useState<string>('')
   const [firstName, setFirstName] = useState<string>('')
   const [lastName, setLastName] = useState<string>('')
+  const { firstNameC, setFirstNameC } = useContext(nameContext)
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     try {
-      await axios.post('https://nowruzi.top/api/User/Register', {
+      const res = await axios.post('https://nowruzi.top/api/User/Register', {
         mobile,
         password,
         firstName,
         lastName,
       })
-      router.push('/login')
+      if (res.data.isSuccess) {
+        setFirstNameC(firstName)
+        router.push('/login')
+      }
     } catch (e) {
       console.log(e);
     }
