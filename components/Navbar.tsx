@@ -3,6 +3,7 @@ import Link from 'next/link'
 import React, { useContext, useEffect, useState } from 'react'
 import { loginContext } from '@/hooks/LoginFunction'
 import { nameContext } from '../hooks/Name'
+import { useRouter } from 'next/navigation'
 export default function Navbar() {
     const [search, setSearch] = useState("")
     const [menuOpen, setMenuOpen] = useState(false)
@@ -10,6 +11,8 @@ export default function Navbar() {
     const [scrollY, setScrollY] = useState(0)
     const { login, setLogin } = useContext(loginContext)
     const { firstNameC, setFirstNameC } = useContext(nameContext)
+    const [loginPanel, setLoginPanel] = useState(false)
+    const router = useRouter()
     useEffect(() => {
         setVh(window.innerHeight)
         const handleScroll = () => setScrollY(window.scrollY)
@@ -17,7 +20,7 @@ export default function Navbar() {
         return () => { window.removeEventListener("scroll", handleScroll); setMenuOpen(false) }
     }, [])
     return (
-        <div>
+        <div className='relative'>
             <div className='bg-gray-200 flex gap-2 py-2 px-4 items-center md:justify-between'>
                 <div className='flex items-center gap-2 '>
                     <img src={'/images/navbar/burger-bar.png'} alt="burger bar" className='w-6 md:hidden' onClick={() => setMenuOpen(!menuOpen)} />
@@ -29,19 +32,19 @@ export default function Navbar() {
                         <input type="text" placeholder='جستجو در محصولات...' value={search} onChange={e => setSearch(e.target.value)} className='py-2 px-11 h-11 w-full border-0 outline-0' />
                     </div>
                 </div>
-                <div className='flex items-center gap-2 '>
-                    <Link href={'/login'} onClick={() => setMenuOpen(false)} className='bg-white p-2.5 rounded-md md:flex md:gap-1'>
+                <div className='flex items-center gap-2 cursor-pointer'>
+                    <div onClick={() => { setMenuOpen(false); login ? setLoginPanel(!loginPanel) : router.push('/login') }} className='bg-white p-2.5 rounded-md md:flex md:gap-1'>
                         <img src={'/images/navbar/person-svgrepo-com(1).svg'} alt="person" className='w-6' />
-                        {login ? <h2 className='hidden md:block'>{firstNameC}</h2> : <h2 className='hidden md:block'></h2>}
-                        {login ? <span className='hidden md:flex'>خوش آمدید</span> : <span className='hidden md:inline'>ورود به حساب کاربری</span>}
-                    </Link>
+                        {login ? (<div onClick={() => setLoginPanel(!loginPanel)} className='hidden md:flex'><h2 >{firstNameC}</h2>&nbsp;<span >خوش آمدید</span>
+                        </div>) : (<div className='hidden md:flex'><h2 ></h2> <span>ورود به حساب کاربری</span></div>)}
+                    </div>
                     <span>
                         <Link href={'/cart'}>
-                            <img src={'/images/navbar/shop-cart-svgrepo-com.svg'} alt="cart" className='w-6' />
+                            <img src={'/images/navbar/shop-cart-svgrepo-com.svg'} alt="cart" className='w-6 md:min-w-6' />
                         </Link>
                     </span>
                 </div>
-            </div>
+            </div >
             <div className='hidden md:flex bg-gray-200 gap-4 px-4 py-2 '>
                 <div onClick={() => setMenuOpen(!menuOpen)} className='flex gap-1 cursor-pointer '>
                     <img src={'/images/navbar/burger-bar.png'} alt="burger bar" className='w-6 ' /> دسته بندی کالا ها
@@ -92,6 +95,19 @@ export default function Navbar() {
                     </div>
                 </div>
             }
+            {loginPanel &&
+                <div className='absolute left-12 bg-white min-w-40 shadow rounded flex flex-col min-h-22 justify-around'>
+                    <div>
+                        <Link href={'/cart'} onClick={() => setLoginPanel(false)} className='flex gap-1 pr-1'>
+                            <img src={'/images/navbar/hamburger-menu-svgrepo-com.svg'} alt="hamburger menu" className='w-6' />
+                            سفارش های من
+                        </Link>
+                    </div>
+                    <div className='w-6 flex gap-1 pr-1 cursor-pointer' onClick={()=>setLogin(false)}>
+                        <img src={'/images/navbar/sign-out-left-5-svgrepo-com.svg'} alt="sign out" />
+                        <h4 className='text-nowrap'>خروج از حساب کاربری</h4>
+                    </div>
+                </div>}
         </div >
     )
 }
