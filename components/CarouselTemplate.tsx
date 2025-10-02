@@ -4,9 +4,8 @@ import { Navigation } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import Container from './Container';
-import { useParams } from 'next/navigation';
+import store from '@/store/store';
 import Link from 'next/link';
-
 type TProduct = {
     id: number;
     name: string;
@@ -15,6 +14,7 @@ type TProduct = {
     price: number;
 }
 export default function CarouselTemplate({ product, banner }: { product: TProduct[], banner: string }) {
+    const { count, increase, decrease, reset } = store()
 
     return (
         <div>
@@ -33,12 +33,21 @@ export default function CarouselTemplate({ product, banner }: { product: TProduc
                     {product.map((p) => (
                         <SwiperSlide key={p.id}>
                             <Link href={`/products/${p.id}`}>
-                                <div className="p-4 rounded-lg bg-white text-center flex flex-col hover:-translate-y-1.5 hover:shadow-2xl hover:shadow-rose-200">
+                                <div className="p-4 rounded-t-lg bg-white text-center flex flex-col">
                                     <img src={p.src} alt={p.alt} className="w-full object-contain rounded-md mb-1" />
-                                    <h3 className="font-medium min-h-16">{p.name}</h3>
-                                    <h4 className='text-left'><span className='font-semibold'>{p.price}&nbsp;</span>تومان</h4>
+                                    <h3 className="font-medium min-h-14">{p.name}</h3>
                                 </div>
                             </Link>
+                            <div className='flex justify-between items-center bg-white rounded-b-lg px-4 pb-1'>
+                                <div className='flex items-center gap-1'>
+                                    <button className='py-1 px-2 bg-rose-500 text-white rounded' onClick={increase}>+</button>
+                                    <h3>{count}</h3>
+                                    <button className='py-1 px-2 bg-rose-500 text-white rounded' onClick={decrease}>-</button>
+                                </div>
+                                <div className='flex'>
+                                    <h4 className='text-left'><span className='font-semibold'>{p.price}&nbsp;</span>تومان</h4>
+                                </div>
+                            </div>
                         </SwiperSlide>
                     ))}
                 </Swiper>

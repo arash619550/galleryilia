@@ -56,8 +56,8 @@ export default function Navbar() {
                 menuOpen && vh >= scrollY &&
                 <div className='flex flex-col p-4 z-2 bg-fuchsia-200 max-w-140 fixed top-0 w-140 h-screen md:hidden'>
                     <img src="/images/navbar/close-circle-svgrepo-com.svg" alt="close" className='w-8 md:hidden' onClick={() => setMenuOpen(!menuOpen)} />
-                    <img src="/images/logo/logo.webp" alt="logo" className='w-16 self-center md:hidden' />
-                    <ul onClick={() => setMenuOpen(!menuOpen)}>
+                    <img src="/images/logo/logo.webp" alt="logo" className='w-16 self-center cursor-pointer md:hidden ' onClick={() => { router.push('/'); setMenuOpen(false) }} />
+                    <ul onClick={() => { setMenuOpen(!menuOpen) }}>
                         <li><Link onClick={() => setMenuOpen(false)} href={'/all-products'}>دسته بندی محصولات</Link></li>
                         <li><Link onClick={() => setMenuOpen(false)} href={'/all-products/smartwatch'}>ساعت هوشمند</Link></li>
                         <li><Link onClick={() => setMenuOpen(false)} href={'/all-products/powerbank'}>پاور بانک</Link></li>
@@ -103,9 +103,9 @@ export default function Navbar() {
                             سفارش های من
                         </Link>
                     </div>
-                    <div className='w-6 flex gap-1 pr-1 cursor-pointer' onClick={()=>setLogin(false)}>
+                    <div className='w-6 flex gap-1 pr-1 cursor-pointer' onClick={() => setLogin(false)}>
                         <img src={'/images/navbar/sign-out-left-5-svgrepo-com.svg'} alt="sign out" />
-                        <h4 className='text-nowrap'>خروج از حساب کاربری</h4>
+                        <h4 className='text-nowrap' onClick={() => setLoginPanel(false)}>خروج از حساب کاربری</h4>
                     </div>
                 </div>}
         </div >
